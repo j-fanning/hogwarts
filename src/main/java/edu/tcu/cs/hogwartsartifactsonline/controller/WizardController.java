@@ -26,7 +26,7 @@ public class WizardController {
 
     @GetMapping("/{wizardId}")
     public Result findById(@PathVariable Integer wizardId){
-        return new Result(true, StatusCode.SUCCESS, "Find One Success", service.findbyId(wizardId));
+        return new Result(true, StatusCode.SUCCESS, "Find One Success", service.findById(wizardId));
     }
 
     @PostMapping()

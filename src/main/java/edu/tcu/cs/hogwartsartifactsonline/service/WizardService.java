@@ -28,7 +28,7 @@ public class WizardService {
         return wizardDao.findAll();
     }
 
-    public Wizard findbyId(Integer id) {
+    public Wizard findById(Integer id) {
         return wizardDao.findById(id).get();
     }
 
