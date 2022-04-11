@@ -4,6 +4,7 @@ import edu.tcu.cs.hogwartsartifactsonline.dao.ArtifactDao;
 import edu.tcu.cs.hogwartsartifactsonline.domain.Artifact;
 import edu.tcu.cs.hogwartsartifactsonline.utils.IdWorker;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 import java.util.List;
