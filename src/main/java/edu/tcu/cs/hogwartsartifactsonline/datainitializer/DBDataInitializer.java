@@ -1,7 +1,9 @@
 package edu.tcu.cs.hogwartsartifactsonline.datainitializer;
 
 import edu.tcu.cs.hogwartsartifactsonline.dao.ArtifactDao;
+import edu.tcu.cs.hogwartsartifactsonline.dao.WizardDao;
 import edu.tcu.cs.hogwartsartifactsonline.domain.Artifact;
+import edu.tcu.cs.hogwartsartifactsonline.domain.Wizard;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -9,9 +11,11 @@ import org.springframework.stereotype.Component;
 public class DBDataInitializer implements CommandLineRunner {
 
     private ArtifactDao artifactDao;
+    private WizardDao wizardDao;
 
-    public DBDataInitializer(ArtifactDao artifactDao) {
+    public DBDataInitializer(ArtifactDao artifactDao, WizardDao wizardDao) {
         this.artifactDao = artifactDao;
+        this.wizardDao = wizardDao;
     }
 
     @Override
@@ -52,11 +56,25 @@ public class DBDataInitializer implements CommandLineRunner {
         a6.setDescription("The Resurrection Stone allows the holder to bring back deceased...  ");
         a6.setImageUrl("imageUrl");
 
-        artifactDao.save(a1);
-        artifactDao.save(a2);
-        artifactDao.save(a3);
-        artifactDao.save(a4);
-        artifactDao.save(a5);
+        Wizard w1 = new Wizard();
+        w1.setName("James the Wizard");
+        w1.addArtifact(a1);
+        w1.addArtifact(a2);
+
+        Wizard w2 = new Wizard();
+        w2.setName("Noelle the Witch");
+        w2.addArtifact(a3);
+        w2.addArtifact(a4);
+
+        Wizard w3 = new Wizard();
+        w3.setName("Ryan the Wizard");
+        w3.addArtifact(a5);
+        //w3.addArtifact(a6);
+
+        wizardDao.save(w1);
+        wizardDao.save(w2);
+        wizardDao.save(w3);
+        //since it isnt added to a wizard, save by itself
         artifactDao.save(a6);
 
     }
